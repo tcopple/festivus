@@ -1,7 +1,7 @@
 # A sample Gemfile
 source "http://rubygems.org"
 
-# gem "rails"
+ gem "rails", "~>3.2.0"
 gem "rake"
 gem "ffi"
 gem "vagrant"
