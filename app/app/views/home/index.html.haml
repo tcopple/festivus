@@ -1,0 +1,16 @@
+.well
+  %span
+    %h2 Welcome to Festivus
+    %h5 Festival Planning for the "Rest of Us."
+
+  %p
+    This application has been designed to provide event planners the ability
+    to define, gather, and report on information about vendors, venues and
+    other parties involved in throwing the event.
+
+    Currently you can:
+    %ul
+      %li= link_to "Create Questionnaires", new_questionnaire_path
+      %li= link_to "Create Instances of a Questionnaire", questionnaires_path
+      %li= link_to "View a List of Active Instances", questionnaire_instances_path
+

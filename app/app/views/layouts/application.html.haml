@@ -28,7 +28,9 @@
             = bootstrap_flash
             = yield
 
-        %footer
-          = render "shared/footer"
+      %footer
+        .container-fluid
+          .row-fluid
+            = render "shared/footer"
 
     = javascript_include_tag "application"
