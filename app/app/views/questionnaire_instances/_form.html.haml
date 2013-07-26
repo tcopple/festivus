@@ -1,0 +1,9 @@
+.well
+  = form_for [@questionnaire, @questionnaire_instance], url: 'QuestionnaireInstance#create' do |f|
+    %fieldset
+      = bootstrapped_field(f, @questionnaire_instance, :text_field, :name)
+      = bootstrapped_field(f, @questionnaire_instance, :text_field, :email)
+      = bootstrapped_field(f, @questionnaire_instance, :datetime_select, :due_date)
+      = bootstrapped_field(f, @questionnaire_instance, :number_field, :notification_count)
+    .actions
+      = f.submit 'Create', class: 'btn btn-primary'

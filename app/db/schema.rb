@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130705175013) do
+ActiveRecord::Schema.define(:version => 20130706010533) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id"
@@ -81,6 +81,16 @@ ActiveRecord::Schema.define(:version => 20130705175013) do
   end
 
   add_index "question_groups", ["api_id"], :name => "uq_question_groups_api_id", :unique => true
+
+  create_table "questionnaire_instances", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.datetime "due_date"
+    t.integer  "notification_count"
+    t.integer  "questionnaire_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
 
   create_table "questionnaires", :force => true do |t|
     t.string   "title"

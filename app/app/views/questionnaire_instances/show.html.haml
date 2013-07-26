@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @questionnaire_instance.name
+%p
+  %b Email:
+  = @questionnaire_instance.email
+%p
+  %b Due date:
+  = @questionnaire_instance.due_date
+%p
+  %b Notification count:
+  = @questionnaire_instance.notification_count
+
+= link_to 'Edit', edit_questionnaire_instance_path(@questionnaire_instance)
+\|
+= link_to 'Back', questionnaire_instances_path

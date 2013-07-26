@@ -1,0 +1,4 @@
+%div
+  - flash.each do |key, value|
+    .fade-in{ class: flash_class(key) }
+      =link_to "X", "#", data: { dismiss: "alert", class: "close" }

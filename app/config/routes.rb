@@ -1,8 +1,13 @@
 Festivus::Application.routes.draw do
   root to: "home#index"
-  resources :questionnaires
 
-  mount Surveyor::Engine => "/surveys", :as => "surveyor"
+  resources :questionnaires, only: [:index, :show, :new, :create, :destroy] do
+    resources :instances, controller: "QuestionnaireInstances", only: [:show, :new, :create, :destroy]
+  end
+
+  match 'instances' => 'questionnaire_instances#index', as: "questionnaire_instances"
+
+  mount Surveyor::Engine => "/surveyor", as: "surveyor"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,21 +1,23 @@
-%h1 Listing questionnaires
+%h1 Available Questionnaires
 
-%table
-  %tr
-    %th Title
-    %th Description
-    %th
-    %th
-    %th
-
-  - @questionnaires.each do |questionnaire|
+%table.table
+  %thead
     %tr
-      %td= questionnaire.title
-      %td= questionnaire.description
-      %td= link_to 'Show', questionnaire
-      %td= link_to 'Edit', edit_questionnaire_path(questionnaire)
-      %td= link_to 'Destroy', questionnaire, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %th Title
+      %th Description
+      %th
+      %th
+      %th
+
+  %tbody
+    - @questionnaires.each do |questionnaire|
+      %tr
+        %td= questionnaire.title
+        %td= questionnaire.description
+        %td= link_to 'Show', questionnaire
+        %td= link_to 'Destroy', questionnaire, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %td= link_to 'Create Instance', new_questionnaire_instance_path(questionnaire), class: "btn btn-mini btn-primary"
 
 %br
 
-= link_to 'New Questionnaire', new_questionnaire_path
+= link_to 'New Questionnaire', new_questionnaire_path, class: "btn btn-primary"

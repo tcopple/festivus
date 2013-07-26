@@ -1,0 +1,21 @@
+%h1 Active Instances
+
+%table.table
+  %tr
+    %th Name
+    %th Email
+    %th Due date
+    %th Notification count
+    -# %th
+    -# %th
+    %th
+
+  - @instances.each do |instance|
+    %tr
+      %td= instance.name
+      %td= instance.email
+      %td= instance.due_date
+      %td= instance.notification_count
+      -# %td= link_to 'Show', instance
+      -# %td= link_to 'Edit', edit_instance_path(instance)
+      -# %td= link_to 'Destroy', instance, :method => :delete, :data => { :confirm => 'Are you sure?' }

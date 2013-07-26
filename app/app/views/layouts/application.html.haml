@@ -18,7 +18,7 @@
 
 
   %body
-    .navbar.navbar-fluid-top
+    .navbar.navbar-fixed-top.navbar-inverse
       .navbar-inner
         .container-fluid
           %a.btn.btn-navbar(data-target=".nav-collapse" data-toggle="collapse")
@@ -32,22 +32,21 @@
           -#     %li= link_to "Link 2", "/path2"
           -#     %li= link_to "Link 3", "/path3"
 
-    .container-fluid
+    %content
+      .container-fluid
+        .row-fluid
+          .span3
+            .well.sidebar-nav
+              %ul.nav.nav-list
+                %li.nav-header Quick Links
+                %li= link_to "Questionnaires", questionnaires_path
+                %li= link_to "Instances", questionnaire_instances_path
+          .span9
+            = bootstrap_flash
+            = yield
 
-      .row-fluid
-        .span3
-          .well.sidebar-nav
-            %ul.nav.nav-list
-              %li.nav-header Sidebar
-              %li= link_to "Link 1", "/path1"
-              %li= link_to "Link 2", "/path2"
-              %li= link_to "Link 3", "/path3"
-        .span9
-          = bootstrap_flash
-          = yield
-
-      %footer
-        %p &copy; p&c development
+        %footer
+          %p &copy; p&c development
     /
       Javascripts
       \==================================================
