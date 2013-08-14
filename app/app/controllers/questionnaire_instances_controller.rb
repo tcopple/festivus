@@ -41,4 +41,11 @@ class QuestionnaireInstancesController < ApplicationController
     @questionnaire_instance.destroy
     respond_with(@questionnaire_instance)
   end
+
+  def remind
+    @instance = QuestionnaireInstance.find(params[:id])
+    QuestionnaireInstanceServices.send_reminder(@instance)
+
+    render 'index'
+  end
 end

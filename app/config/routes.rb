@@ -6,6 +6,7 @@ Festivus::Application.routes.draw do
   end
 
   match 'instances' => 'questionnaire_instances#index', as: "questionnaire_instances"
+  match 'instances/:id/send_reminder' => 'questionnaire_instances#remind', as: "send_reminder"
 
   mount Surveyor::Engine => "/surveyor", as: "surveyor"
 
