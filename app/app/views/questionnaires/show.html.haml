@@ -1,11 +1,21 @@
 %p#notice= notice
 
-%p
-  %b Title:
-  = @questionnaire.title
-%p
-  %b Description:
-  = @questionnaire.description
+%h4 Fields
+.well
+  %p
+    %b Title:
+    = @questionnaire.title
+  %p
+    %b Description:
+    = @questionnaire.description
+  %p
+    %b Last Updated:
+    = @questionnaire.updated_at
+
+%h4
+  Definition
+.well
+  = @questionnaire.to_text
 
 %span
   = link_to 'Back', questionnaires_path
