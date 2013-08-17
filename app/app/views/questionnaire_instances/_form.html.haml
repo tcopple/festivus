@@ -1,9 +1,19 @@
 .well
-  = form_for [@questionnaire, @questionnaire_instance], url: 'QuestionnaireInstance#create' do |f|
+  = form_for [@questionnaire, @questionnaire_instance], url: questionnaire_instances_path(@questionnaire, @questionnaire_instance) do |f|
     %fieldset
       = bootstrapped_field(f, @questionnaire_instance, :text_field, :name)
       = bootstrapped_field(f, @questionnaire_instance, :text_field, :email)
-      = bootstrapped_field(f, @questionnaire_instance, :datetime_select, :due_date)
+
+      .control-group
+        = f.label :due_date, class: "control-label"
+        .controls#datetime-picker.input-append
+          = f.text_field :due_date
+          %span.add-on
+            %i{ :data => {:time_icon => "icon-time", :date_icon => "icon-calendar"} }
       = bootstrapped_field(f, @questionnaire_instance, :number_field, :notification_count)
     .actions
       = f.submit 'Create', class: 'btn btn-primary'
+
+- content_for :javascript do
+  :javascript
+    $(function() { $('#datetime-picker').datetimepicker({ language: 'en', pick12HourFormat: true }); });

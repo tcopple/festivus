@@ -21,14 +21,17 @@ class QuestionnaireInstancesController < ApplicationController
   end
 
   def create
-    @questionnaire = Questinnaire.find(params[:questionnaire_id])
-    @questionnaire_instance = @questionnaire.questionnaire_instances.build(params[:questionnaire_instance])
+    @questionnaire = Questionnaire.find(params[:questionnaire_id])
+
+    datetime = DateTime.strptime(params[:questionnaire_instance][:due_date], "%m/%d/%Y")
+    p = params[:questionnaire_instance].merge({ due_date: datetime})
+    @questionnaire_instance = @questionnaire.questionnaire_instances.build(p)
 
     respond_with(@questionnaire_instance) do |format|
       if @questionnaire_instance.save
         flash[:notice] = 'Questionnaire instance was successfully created.'
-        format.html { redirect_to @questionnaire_instance }
-        format.json { render json: @questionnaire_instance, status: :created, location: @questionnaire_instance }
+        format.html { redirect_to instances_path }
+        format.json { render json: instances_path, status: :created, location: @questionnaire_instance }
       else
         format.html { render action: "new" }
         format.json { render json: @questionnaire_instance.errors, status: :unprocessable_entity }
