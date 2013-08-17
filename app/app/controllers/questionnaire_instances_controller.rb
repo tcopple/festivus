@@ -42,7 +42,8 @@ class QuestionnaireInstancesController < ApplicationController
   def destroy
     @questionnaire_instance = QuestionnaireInstance.find(params[:id])
     @questionnaire_instance.destroy
-    respond_with(@questionnaire_instance)
+    flash[:notice] = 'Questionnaire Instance was successfully removed.'
+    redirect_to instances_path
   end
 
   def remind

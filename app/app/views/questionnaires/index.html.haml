@@ -15,8 +15,8 @@
         %td= questionnaire.title
         %td= questionnaire.description
         %td= link_to 'Show', questionnaire
-        %td= link_to 'Destroy', questionnaire, :method => :delete, :data => { :confirm => 'Are you sure?' }
-        %td= link_to 'Create Instance', new_questionnaire_instance_path(questionnaire), class: "btn btn-mini btn-primary"
+        %td= link_to 'Create Instance', new_questionnaire_instance_path(questionnaire), class: "btn btn-mini btn-inverse"
+        %td= link_to 'Destroy', questionnaire, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn btn-mini btn-danger"
 
 %br
 
