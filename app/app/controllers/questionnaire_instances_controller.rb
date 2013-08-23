@@ -48,8 +48,13 @@ class QuestionnaireInstancesController < ApplicationController
 
   def remind
     @instance = QuestionnaireInstance.find(params[:id])
-    QuestionnaireInstanceServices.send_reminder(@instance)
 
-    render 'index'
+    if QuestionnaireInstanceServices.send_reminder(@instance)
+      flash[:notice] = "Reminder successfully sent to #{@instance.email}"
+    else
+      flash[:error] = "Reminder was not sent to #{@instance.email}"
+    end
+
+    redirect_to instances_path
   end
 end

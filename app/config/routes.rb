@@ -9,6 +9,8 @@ Festivus::Application.routes.draw do
   match 'instances/:id/send_reminder' => 'questionnaire_instances#remind', as: "send_reminder"
 
   mount Surveyor::Engine => "/surveyor", as: "surveyor"
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

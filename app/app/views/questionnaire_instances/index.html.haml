@@ -17,9 +17,9 @@
       %td= instance.name
       %td= instance.email
       %td= instance.due_date
-      %td= instance.notification_count
       %td n/a
-      %td= link_to "Send Reminder", send_reminder_path(instance), class: "btn btn-mini btn-inverse"
+      %td= instance.notification_count
+      %td= link_to "Remind", send_reminder_path(instance), class: "btn btn-mini btn-inverse"
       %td= link_to 'Destroy', questionnaire_instance_path(instance.questionnaire, instance), :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn btn-mini btn-danger"
 
       -# %td= link_to 'Show', instance
