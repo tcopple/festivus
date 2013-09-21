@@ -1,3 +1,4 @@
+require 'surveyor'
 class QuestionnairesController < ApplicationController
   respond_to :html, :xml, :json
 
@@ -41,5 +42,18 @@ class QuestionnairesController < ApplicationController
     @questionnaire.destroy
 
     respond_with(@questionnaire)
+  end
+
+  def parse
+    begin
+      @questionnaire = Questionnaire.find(params[:questionnaire_id])
+      ret = QuestionnaireServices.parse(@questionnaire)
+
+      flash[:notice] = "Questionnaire was successfully parsed and updated."
+    rescue Surveyor::ParserError => pe
+      flash[:error] = ["Questionnaire was not successfully parsed.", pe.message]
+    end
+
+    render 'show'
   end
 end

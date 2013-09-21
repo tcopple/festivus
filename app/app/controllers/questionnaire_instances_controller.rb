@@ -12,6 +12,7 @@ class QuestionnaireInstancesController < ApplicationController
 
   def show
     @questionnaire_instance = QuestionnaireInstance.find(params[:id])
+    @surveyor_response_set = QuestionnaireInanceServices.get_surveyor_response_set(@questionnaire_instance)
     respond_with(@questionnaire_instance)
   end
 
@@ -26,6 +27,8 @@ class QuestionnaireInstancesController < ApplicationController
     datetime = DateTime.strptime(params[:questionnaire_instance][:due_date], "%m/%d/%Y")
     p = params[:questionnaire_instance].merge({ due_date: datetime})
     @questionnaire_instance = @questionnaire.questionnaire_instances.build(p)
+
+    QuestionnaireServices.create_surveyor_instance @questionnaire, @questionnaire_instance
 
     respond_with(@questionnaire_instance) do |format|
       if @questionnaire_instance.save

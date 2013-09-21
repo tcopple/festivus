@@ -13,6 +13,7 @@
   %b Notification count:
   = @questionnaire_instance.notification_count
 
+= link_to 'View Response Set', view_my_survey_path(survey_code: @surveyor_survey.access_code, reponse_set_code: @surveyor_response_set.access_code)
 = link_to 'Edit', edit_questionnaire_instance_path(@questionnaire_instance)
 \|
 = link_to 'Back', instances_path

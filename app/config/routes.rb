@@ -2,6 +2,7 @@ Festivus::Application.routes.draw do
   root to: "home#index"
 
   resources :questionnaires, only: [:index, :show, :new, :create, :destroy] do
+    match 'parse' => 'questionnaires#parse', as: "parse"
     resources :instances, controller: "QuestionnaireInstances", only: [:show, :new, :create, :destroy]
   end
 
