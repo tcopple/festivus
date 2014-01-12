@@ -1,3 +1,4 @@
+require 'pp'
 class QuestionnaireInstancesController < ApplicationController
   respond_to :html, :xml, :json
 
@@ -12,7 +13,8 @@ class QuestionnaireInstancesController < ApplicationController
 
   def show
     @questionnaire_instance = QuestionnaireInstance.find(params[:id])
-    @surveyor_response_set = QuestionnaireInanceServices.get_surveyor_response_set(@questionnaire_instance)
+    @surveyor_response_set = QuestionnaireInstanceServices.get_surveyor_response_set(@questionnaire_instance)
+    @surveyor_survey = QuestionnaireServices.get_surveyor_survey(@questionnaire)
     respond_with(@questionnaire_instance)
   end
 
@@ -28,10 +30,10 @@ class QuestionnaireInstancesController < ApplicationController
     p = params[:questionnaire_instance].merge({ due_date: datetime})
     @questionnaire_instance = @questionnaire.questionnaire_instances.build(p)
 
-    QuestionnaireServices.create_surveyor_instance @questionnaire, @questionnaire_instance
+    ret = QuestionnaireServices.create_surveyor_instance @questionnaire, @questionnaire_instance
 
     respond_with(@questionnaire_instance) do |format|
-      if @questionnaire_instance.save
+      if @questionnaire_instance.save && ret
         flash[:notice] = 'Questionnaire instance was successfully created.'
         format.html { redirect_to instances_path }
         format.json { render json: instances_path, status: :created, location: @questionnaire_instance }

@@ -10,6 +10,6 @@ class Questionnaire < ActiveRecord::Base
   end
 
   def to_text
-    self.definition ||= File.read(QuestionnaireServices.path(self))
+    definition ||= QuestionnaireServices.to_text(self)
   end
 end

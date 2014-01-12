@@ -6,6 +6,7 @@ class CreateQuestionnaireInstances < ActiveRecord::Migration
       t.datetime :due_date
       t.integer :notification_count
       t.integer :questionnaire_id
+      t.integer :response_set_id
 
       t.timestamps
     end

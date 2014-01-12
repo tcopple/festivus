@@ -55,6 +55,7 @@ GEM
       thor (>= 0.13.6)
     formtastic (2.1.1)
       actionpack (~> 3.0)
+    google-analytics-rails (0.0.4)
     haml (4.0.3)
       tilt
     haml-rails (0.4)
@@ -182,6 +183,7 @@ DEPENDENCIES
   bson_ext
   coffee-rails (~> 3.2.0)
   foreman
+  google-analytics-rails
   haml
   haml-rails
   jbuilder (~> 1.2u)

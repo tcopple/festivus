@@ -1,5 +1,3 @@
-%p#notice= notice
-
 %h4 Fields
 .well
   %p
@@ -11,6 +9,9 @@
   %p
     %b Last Updated:
     = @questionnaire.updated_at
+  %p
+    %b Assumed Filepath:
+    = QuestionnaireServices.path @questionnaire
 
 %h4
   Definition

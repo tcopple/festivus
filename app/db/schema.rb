@@ -88,6 +88,7 @@ ActiveRecord::Schema.define(:version => 20130706010533) do
     t.datetime "due_date"
     t.integer  "notification_count"
     t.integer  "questionnaire_id"
+    t.integer  "response_set_id"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
   end
