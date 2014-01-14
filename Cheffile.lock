@@ -1,23 +1,13 @@
 SITE
   remote: http://community.opscode.com/api/v1
   specs:
-    build-essential (1.4.0)
+    build-essential (1.4.2)
     chef_gem (0.1.0)
-    yum (2.3.0)
-
-GIT
-  remote: https://github.com/edelight/chef-mongodb.git
-  ref: master
-  sha: e56f80b599e05ff46039b09a0fa65d325c4ba46b
-  specs:
-    mongodb (0.12.0)
-      apt (>= 1.8.2)
-      yum (>= 0.0.0)
 
 GIT
   remote: https://github.com/fnichol/chef-rvm.git
   ref: master
-  sha: 7038fb8c518d0d7785767de215b1ae463f237973
+  sha: 26ad5c043c70ea98855a049fbbacb7ffc5ad73e3
   specs:
     rvm (0.9.1)
       chef_gem (>= 0.0.0)
@@ -25,14 +15,14 @@ GIT
 GIT
   remote: https://github.com/opscode-cookbooks/apt.git
   ref: master
-  sha: 489d2e2d60cb08a4d2424b40f83a60b4c3a8df65
+  sha: 5dad8fd66f3abf612a25dfce12ec5bdc243a3e3c
   specs:
-    apt (2.0.1)
+    apt (2.3.5)
 
 GIT
   remote: https://github.com/opscode-cookbooks/imagemagick.git
   ref: master
-  sha: 20aec29c45ee3c04616bb3fa3cd5ddf4baf48f00
+  sha: e80c1ca66b0a905cbb6096ee1e5fa19911067208
   specs:
     imagemagick (0.2.2)
 
@@ -40,6 +30,5 @@ DEPENDENCIES
   apt (>= 0)
   build-essential (>= 0)
   imagemagick (>= 0)
-  mongodb (>= 0)
   rvm (>= 0)
 

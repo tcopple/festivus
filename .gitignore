@@ -17,3 +17,4 @@ app/.sass-cache/**/*
 .yardoc
 _yardoc
 doc/
+*.vagrant*

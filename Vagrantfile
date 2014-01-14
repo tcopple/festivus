@@ -20,6 +20,7 @@ Vagrant::Config.run do |config|
   # any other machines on the same network, but cannot be accessed (through this
   # network interface) by any external networks.
   # config.vm.network :hostonly, "192.168.33.10"
+  config.vm.hostname "festivus01"
 
   # Assign this VM to a bridged network, allowing you to connect directly to a
   # network using the host's network device. This makes the VM appear as another
@@ -51,8 +52,6 @@ Vagrant::Config.run do |config|
     chef.add_recipe "build-essential"
     chef.add_recipe "rvm::vagrant"
     chef.add_recipe "rvm::system"
-    chef.add_recipe "mongodb::10gen_repo"
-    chef.add_recipe "mongodb::default"
 
     # You may also specify custom JSON attributes:
     # chef.json = { :mysql_password => "foo" }
