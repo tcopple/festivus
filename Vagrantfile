@@ -52,14 +52,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # Use VBoxManage to customize the VM. For example to change memory:
     # vb.customize ["modifyvm", :id, "--memory", "1024"]
   end
-  #
+
   # View the documentation for the provider you're using for more
   # information on available options.
 
   # Enable provisioning with chef solo, specifying a cookbooks path, roles
   # path, and data_bags path (all relative to this Vagrantfile), and adding
   # some recipes and/or roles.
-  #
 
   config.vm.provision :chef_solo do |chef|
     chef.cookbooks_path = "cookbooks"
@@ -69,6 +68,19 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.add_recipe "apt"
     chef.add_recipe "build-essential"
     chef.add_recipe "rvm::vagrant"
-    chef.add_recipe "rvm::system"
+    chef.add_recipe "rvm::user_install"
+    chef.add_recipe "pygments"
+
+    chef.json = {
+      :rvm => {
+        :user_installs => [
+        {
+            :user => "vagrant",
+            :default_ruby => "ruby-1.9.3p448",
+            :rubies => ["ruby-1.9.3p448"],
+            :global_gems => [ { :name => 'bundler' } ],
+        } ]
+      }
+    }
   end
 end

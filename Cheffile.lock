@@ -26,9 +26,17 @@ GIT
   specs:
     imagemagick (0.2.2)
 
+GIT
+  remote: https://github.com/phlipper/chef-pygments.git
+  ref: master
+  sha: b8c9350ff8fec008d290155657e959fa3ed22867
+  specs:
+    pygments (1.0.0)
+
 DEPENDENCIES
   apt (>= 0)
   build-essential (>= 0)
   imagemagick (>= 0)
+  pygments (>= 0)
   rvm (>= 0)
 
