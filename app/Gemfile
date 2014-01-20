@@ -23,6 +23,11 @@ gem 'sinatra', '>=1.3.0', require: nil
 gem 'foreman'
 gem 'google-analytics-rails'
 gem 'thin'
+gem 'highlight', require: 'simplabs/highlight'
+
+group :development do
+  gem 'hirb'
+end
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
