@@ -24,6 +24,7 @@ gem 'foreman'
 gem 'google-analytics-rails'
 gem 'thin'
 gem 'highlight', require: 'simplabs/highlight'
+gem 'devise'
 
 group :development do
   gem 'hirb'

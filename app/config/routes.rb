@@ -1,5 +1,5 @@
 Festivus::Application.routes.draw do
-  root to: "home#index"
+  devise_for :users
 
   resources :questionnaires, only: [:index, :show, :new, :create, :destroy] do
     match 'parse' => 'questionnaires#parse', as: "parse"
@@ -9,7 +9,18 @@ Festivus::Application.routes.draw do
   match 'instances' => 'questionnaire_instances#index', as: "instances"
   match 'instances/:id/send_reminder' => 'questionnaire_instances#remind', as: "send_reminder"
 
-  mount Surveyor::Engine => "/surveyor", as: "surveyor"
+  as :user do
+    get "/login" => "devise/sessions#new"
+    delete "/logout" => "devise/sessions#destroy"
+  end
+
+  authenticated :user do
+    root to: 'home#index', as: :authenticated_root
+  end
+  root to: 'home#index'
+
+  mount Surveyor::Engine => '/surveyor', as: 'surveyor'
+
   require 'sidekiq/web'
   mount Sidekiq::Web => '/sidekiq'
 

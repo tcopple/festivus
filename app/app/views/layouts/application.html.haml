@@ -24,11 +24,17 @@
     %content
       .container-fluid
         .row-fluid
-          .span3
-            = render "shared/sidebar"
-          .span9
-            = bootstrap_flash
+          = bootstrap_flash
+        -if not user_signed_in?
+          .row-fluid
             = yield
+
+        -else
+          .row-fluid
+            .span3
+              = render "shared/sidebar"
+            .span9
+              = yield
 
       %footer
         .container-fluid

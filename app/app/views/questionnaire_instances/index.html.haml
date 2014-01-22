@@ -7,9 +7,8 @@
     %th Due date
     %th Completed
     %th Notification count
+    %th Show
     %th Notify
-    -# %th
-    -# %th
     %th
 
   - @instances.each do |instance|
@@ -19,6 +18,7 @@
       %td= instance.due_date
       %td n/a
       %td= instance.notification_count
+      %td= link_to "Show", surveyor.view_my_survey_path(response_set_code: instance.response_set.access_code, survey_code: instance.response_set.survey.access_code)
       %td= link_to "Remind", send_reminder_path(instance), class: "btn btn-mini btn-inverse"
       %td= link_to 'Destroy', questionnaire_instance_path(instance.questionnaire, instance), :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn btn-mini btn-danger"
 

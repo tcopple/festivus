@@ -1,7 +1,7 @@
 module QuestionnaireInstanceServices
   def self.send_reminder instance
-    mail = QuestionnaireInstanceMailer.delay.reminder_email(instance)
     instance.notification_count += 1
+    mail = QuestionnaireInstanceMailer.delay.reminder_email(instance)
     return instance.save
   end
 

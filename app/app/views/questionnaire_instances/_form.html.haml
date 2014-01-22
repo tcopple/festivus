@@ -10,7 +10,6 @@
           = f.text_field :due_date
           %span.add-on
             %i{ :data => {:time_icon => "icon-time", :date_icon => "icon-calendar"} }
-      = bootstrapped_field(f, @questionnaire_instance, :number_field, :notification_count)
     .actions
       = f.submit 'Create', class: 'btn btn-primary'
 
