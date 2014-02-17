@@ -1,17 +1,32 @@
 .well
-  = form_for [@questionnaire, @questionnaire_instance], url: questionnaire_instances_path(@questionnaire, @questionnaire_instance) do |f|
+  = form_for @instance, html: { id: 'instance-form' }, url: instances_path do |f|
     %fieldset
-      = bootstrapped_field(f, @questionnaire_instance, :text_field, :name)
-      = bootstrapped_field(f, @questionnaire_instance, :text_field, :email)
-
       .control-group
         = f.label :due_date, class: "control-label"
         .controls#datetime-picker.input-append
           = f.text_field :due_date
           %span.add-on
             %i{ :data => {:time_icon => "icon-time", :date_icon => "icon-calendar"} }
+
+      .control-group
+        = f.label :event, class: "control-label"
+        .controls
+          = select_tag 'Choose an event', options_from_collection_for_select(@events, :id, :title)
+
+      .control-group
+        = f.label :contact, class: "control-label"
+        .controls
+          = select_tag 'Choose a contact', options_from_collection_for_select(@contacts, :id, :name)
+
+      .control-group
+        = f.label :questionnaire, class: "control-label"
+        .controls
+          = select_tag 'Choose a questionnaire', options_from_collection_for_select(@questionnaires, :id, :title)
+
+
     .actions
       = f.submit 'Create', class: 'btn btn-primary'
+      = link_to "Cancel", instances_path
 
 - content_for :javascript do
   :javascript

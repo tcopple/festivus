@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140121022513) do
+ActiveRecord::Schema.define(:version => 20140201210305) do
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id"
@@ -40,6 +40,14 @@ ActiveRecord::Schema.define(:version => 20140121022513) do
 
   add_index "answers", ["api_id"], :name => "uq_answers_api_id", :unique => true
 
+  create_table "contacts", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "dependencies", :force => true do |t|
     t.integer  "question_id"
     t.integer  "question_group_id"
@@ -63,6 +71,16 @@ ActiveRecord::Schema.define(:version => 20140121022513) do
     t.string   "response_other"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+  end
+
+  create_table "events", :force => true do |t|
+    t.string   "title"
+    t.string   "where"
+    t.text     "description"
+    t.datetime "when"
+    t.integer  "user_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "question_groups", :force => true do |t|
@@ -89,6 +107,7 @@ ActiveRecord::Schema.define(:version => 20140121022513) do
     t.integer  "notification_count"
     t.integer  "questionnaire_id"
     t.integer  "response_set_id"
+    t.integer  "event_id"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
   end
@@ -96,6 +115,7 @@ ActiveRecord::Schema.define(:version => 20140121022513) do
   create_table "questionnaires", :force => true do |t|
     t.string   "title"
     t.text     "description"
+    t.integer  "user_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end

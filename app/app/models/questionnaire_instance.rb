@@ -1,7 +1,11 @@
 class QuestionnaireInstance < ActiveRecord::Base
-  attr_accessible :due_date, :email, :name, :notification_count
+  attr_accessible :due_date, :notification_count
 
-  belongs_to :questionnaire
+  has_one :event
+  has_one :questionnaire
+  has_one :contact
+
+  belongs_to :user
   belongs_to :response_set
 
   after_initialize :constructor
@@ -18,8 +22,7 @@ class QuestionnaireInstance < ActiveRecord::Base
 
   #not collision safe, just a stop gap for time being
   def user_id
-    #takes the ascii ord of each character weights it by position in string and sums them together
-    self.email.each_char.each_with_index.inject(0){|sum, c| c.first.ord * c.last}
+    self.user.id
   end
 
   def access_code

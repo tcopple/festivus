@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   # attr_accessible :title, :body
 
+  has_many :events
+
   validates_uniqueness_of :email, :case_sensitive => false
 
   def valid_password?(password)

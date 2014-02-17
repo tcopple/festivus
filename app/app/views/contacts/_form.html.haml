@@ -1,0 +1,8 @@
+.well
+  = form_for @contact, html: { id: 'contact-form' } do |e|
+    %fieldset
+      = bootstrapped_field(e, @contact, :text_field, :name)
+      = bootstrapped_field(e, @contact, :text_field, :email)
+
+    .actions
+      = e.submit 'Create', class: 'btn btn-primary'

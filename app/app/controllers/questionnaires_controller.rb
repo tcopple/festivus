@@ -23,6 +23,7 @@ class QuestionnairesController < ApplicationController
 
   def create
     @questionnaire = Questionnaire.new(params[:questionnaire])
+    @questionnaire.user = current_user
 
     respond_with(@questionnaire) do |format|
       if @questionnaire.save

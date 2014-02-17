@@ -1,4 +1,3 @@
-require 'pp'
 class QuestionnaireInstancesController < ApplicationController
   respond_to :html, :xml, :json
 
@@ -19,11 +18,15 @@ class QuestionnaireInstancesController < ApplicationController
   end
 
   def new
-    @questionnaire = Questionnaire.find(params[:questionnaire_id])
-    @questionnaire_instance = @questionnaire.questionnaire_instances.build
+    @instance = QuestionnaireInstance.new
+
+    @questionnaires = Questionnaire.where(user_id: current_user)
+    @events = Event.where(user_id: current_user)
+    @contacts = Contact.where(user_id: current_user)
   end
 
   def create
+
     @questionnaire = Questionnaire.find(params[:questionnaire_id])
 
     datetime = DateTime.strptime(params[:questionnaire_instance][:due_date], "%m/%d/%Y")

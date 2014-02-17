@@ -1,0 +1,19 @@
+%h1 All Contacts
+
+%table.table
+  %thead
+    %tr
+      %th Name
+      %th Email
+      %th
+      %th
+
+  %tbody
+    - @contacts.each do |c|
+      %tr
+        %td= link_to c.name, contact_path(c)
+        %td= c.email
+        %td= link_to 'Destroy', c, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn btn-mini btn-danger"
+%br
+
+= link_to 'New Contact', new_contact_path, class: "btn btn-primary"

@@ -14,7 +14,7 @@
                 %i{ class: 'icon-user'}
                 %span.caret
 
-              %ul.dropdown-menu
+              %ul.dropdown-menu.pull-right
                 %li= link_to "sign out", destroy_user_session_path, :method => 'delete'
 
           - else
