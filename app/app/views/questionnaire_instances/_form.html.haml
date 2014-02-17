@@ -11,17 +11,17 @@
       .control-group
         = f.label :event, class: "control-label"
         .controls
-          = select_tag 'Choose an event', options_from_collection_for_select(@events, :id, :title)
+          = f.select :event_id, @events.map {|e| [e.title, e.id]}, { prompt: "--Select Event--" }
 
       .control-group
         = f.label :contact, class: "control-label"
         .controls
-          = select_tag 'Choose a contact', options_from_collection_for_select(@contacts, :id, :name)
+          = f.select :contact_id, @contacts.map {|c| [c.name, c.id]}, { prompt: "--Select Contact--" }
 
       .control-group
         = f.label :questionnaire, class: "control-label"
         .controls
-          = select_tag 'Choose a questionnaire', options_from_collection_for_select(@questionnaires, :id, :title)
+          = f.select :questionnaire_id, @questionnaires.map {|q| [q.title, q.id]}, { prompt: "--Select Questionnaire--" }
 
 
     .actions

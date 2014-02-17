@@ -1,9 +1,9 @@
 class QuestionnaireInstance < ActiveRecord::Base
-  attr_accessible :due_date, :notification_count
+  attr_accessible :due_date, :notification_count, :event_id, :questionnaire_id, :contact_id
 
-  has_one :event
-  has_one :questionnaire
-  has_one :contact
+  belongs_to :event
+  belongs_to :questionnaire
+  belongs_to :contact
 
   belongs_to :user
   belongs_to :response_set

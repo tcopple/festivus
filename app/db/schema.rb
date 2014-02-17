@@ -101,13 +101,13 @@ ActiveRecord::Schema.define(:version => 20140201210305) do
   add_index "question_groups", ["api_id"], :name => "uq_question_groups_api_id", :unique => true
 
   create_table "questionnaire_instances", :force => true do |t|
-    t.string   "name"
-    t.string   "email"
-    t.datetime "due_date"
+    t.datetime "due_date",           :null => false
     t.integer  "notification_count"
-    t.integer  "questionnaire_id"
-    t.integer  "response_set_id"
-    t.integer  "event_id"
+    t.integer  "questionnaire_id",   :null => false
+    t.integer  "contact_id",         :null => false
+    t.integer  "event_id",           :null => false
+    t.integer  "user_id",            :null => false
+    t.integer  "response_set_id",    :null => false
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
   end

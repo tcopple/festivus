@@ -26,13 +26,14 @@ class QuestionnaireInstancesController < ApplicationController
   end
 
   def create
-
-    @questionnaire = Questionnaire.find(params[:questionnaire_id])
+    @questionnaire = Questionnaire.find(params[:questionnaire_instance][:questionnaire_id])
 
     datetime = DateTime.strptime(params[:questionnaire_instance][:due_date], "%m/%d/%Y")
     p = params[:questionnaire_instance].merge({ due_date: datetime})
-    @questionnaire_instance = @questionnaire.questionnaire_instances.build(p)
+    @questionnaire_instance = QuestionnaireInstance.new(p)
+    @questionnaire_instance.user = current_user
 
+    binding.pry
     ret = QuestionnaireServices.create_surveyor_instance @questionnaire, @questionnaire_instance
 
     respond_with(@questionnaire_instance) do |format|

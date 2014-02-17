@@ -23,6 +23,8 @@ gem 'devise'
 
 group :development do
   gem 'hirb'
+  gem 'pry'
+  gem 'pry-debugger'
 end
 
 group :production do
