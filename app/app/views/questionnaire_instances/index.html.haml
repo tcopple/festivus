@@ -22,6 +22,6 @@
       %td= link_to "Remind", send_reminder_path(instance), class: "btn btn-mini btn-inverse"
       %td= link_to 'Destroy', instance_path(instance.questionnaire, instance), :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn btn-mini btn-danger"
 
-      -# %td= link_to 'Show', instance
-      -# %td= link_to 'Edit', edit_instance_path(instance)
-      -# %td= link_to 'Destroy', instance, :method => :delete, :data => { :confirm => 'Are you sure?' }
+%br
+
+= link_to 'New Instance', new_instance_path, class: "btn btn-primary"

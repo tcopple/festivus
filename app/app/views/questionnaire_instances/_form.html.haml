@@ -23,7 +23,6 @@
         .controls
           = f.select :questionnaire_id, @questionnaires.map {|q| [q.title, q.id]}, { prompt: "--Select Questionnaire--" }
 
-
     .actions
       = f.submit 'Create', class: 'btn btn-primary'
       = link_to "Cancel", instances_path
