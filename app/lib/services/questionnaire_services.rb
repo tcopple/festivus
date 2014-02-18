@@ -17,7 +17,6 @@ module QuestionnaireServices
   end
 
   def self.create_surveyor_instance questionnaire, questionnaire_instance
-    binding.pry
     #copied from surveyor create controller methods, but returns different info
     @survey = QuestionnaireServices.survey_from_questionnaire(questionnaire)
     @user_id = questionnaire_instance.user.id

@@ -33,7 +33,6 @@ class QuestionnaireInstancesController < ApplicationController
     @questionnaire_instance = QuestionnaireInstance.new(p)
     @questionnaire_instance.user = current_user
 
-    binding.pry
     ret = QuestionnaireServices.create_surveyor_instance @questionnaire, @questionnaire_instance
 
     respond_with(@questionnaire_instance) do |format|
