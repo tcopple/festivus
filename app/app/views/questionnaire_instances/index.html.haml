@@ -1,26 +1,30 @@
 %h1 Active Instances
 
-%table.table
-  %tr
-    %th Questionnaire Name
-    %th Contact
-    %th Due date
-    %th Completed
-    %th Notification count
-    %th Show
-    %th Notify
-    %th
+- @instances.each do |event, instances|
+  %h4{ class: "event-#{event.id}" }= event.title
 
-  - @instances.each do |instance|
+  %table.table
     %tr
-      %td= instance.questionnaire.title
-      %td= instance.contact.name
-      %td= instance.due_date
-      %td n/a
-      %td= instance.notification_count
-      %td= link_to "Show", surveyor.view_my_survey_path(response_set_code: instance.response_set.access_code, survey_code: instance.response_set.survey.access_code)
-      %td= link_to "Remind", send_reminder_path(instance), class: "btn btn-mini btn-inverse"
-      %td= link_to 'Destroy', instance_path(instance.questionnaire, instance), :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn btn-mini btn-danger"
+      %th Questionnaire Name
+      %th Event
+      %th Contact
+      %th Due date
+      %th Completed
+      %th Notification count
+      %th Show
+      %th Notify
+      %th
+
+    - instances.each do |instance|
+      %tr
+        %td= instance.event.title
+        %td= instance.contact.name
+        %td= instance.due_date
+        %td n/a
+        %td= instance.notification_count
+        %td= link_to "Show", surveyor.view_my_survey_path(response_set_code: instance.response_set.access_code, survey_code: instance.response_set.survey.access_code)
+        %td= link_to "Remind", send_reminder_path(instance), class: "btn btn-mini btn-inverse"
+        %td= link_to 'Destroy', instance_path(instance.questionnaire, instance), :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn btn-mini btn-danger"
 
 %br
 

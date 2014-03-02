@@ -2,7 +2,8 @@ class QuestionnaireInstancesController < ApplicationController
   respond_to :html, :xml, :json
 
   def index
-    @instances = QuestionnaireInstance.all
+    @instances = QuestionnaireInstance.all.group_by(&:event)
+
     if !@instances.empty?
       respond_with(@instances)
     else
