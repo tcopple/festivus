@@ -1,23 +1,24 @@
--if not user_signed_in?
-  .hero-unit
-    %h1 Festivals for the Rest of Us
-    .lead
-      You must sign in or sign up before you can access our super sweet, top secret content.
-    .row-fluid
-      = link_to "Login", new_user_session_path, :class => "btn btn-success"
-      = link_to "Sign Up", new_user_registration_path, :class => "btn btn-primary"
-- else
-  .well
-    %span
-      %h2 Welcome to Festivus
-      %h5 Festival Planning for the "Rest of Us."
+.jumbotron
+  -if not user_signed_in?
+    .hero-unit
+      %h1 Festivals for the Rest of Us
+      .lead
+        You must sign in or sign up before you can access our super sweet, top secret content.
+      .row-fluid
+        = link_to "Login", new_user_session_path, :class => "btn btn-success"
+        = link_to "Sign Up", new_user_registration_path, :class => "btn btn-primary"
+  - else
+    .well
+      %span
+        %h2 Welcome to Festivus
+        %h5 Festival Planning for the "Rest of Us."
 
-    %p
-      This application has been designed to provide event planners the ability
-      to define, gather, and report on information about vendors, venues and
-      other parties involved in throwing the event.
+      %p
+        This application has been designed to provide event planners the ability
+        to define, gather, and report on information about vendors, venues and
+        other parties involved in throwing the event.
 
-      Currently you can:
-      %ul
-        %li= link_to "Create Questionnaires", new_questionnaire_path
-        %li= link_to "Create Instances of a Questionnaire", questionnaires_path
+        Currently you can:
+        %ul
+          %li= link_to "Create Questionnaires", new_questionnaire_path
+          %li= link_to "Create Instances of a Questionnaire", questionnaires_path

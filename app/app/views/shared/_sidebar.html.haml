@@ -1,10 +1,18 @@
-.well.sidebar-nav
-  %ul.nav.nav-list
-    %li.nav-header Quick Links
-    %li= link_to "Events", events_path
-    %li= link_to "Questionnaires", questionnaires_path
-    %li= link_to "Contacts", contacts_path
-
-  %ul.nav.nav-list
-    %li.nav-header Active Questionnaires
-    %li= link_to "Instances", instances_path
+.col-sm-3.col-md-2.sidebar
+  %ul.nav.nav-sidebar
+    %li
+      = link_to events_path do
+        %i{ class: 'glyphicon glyphicon-calendar'}
+        Events
+    %li
+      = link_to questionnaires_path do
+        %i{ class: 'glyphicon glyphicon-question-sign'}
+        Questionnaires
+    %li
+      = link_to contacts_path do
+        %i{ class: 'glyphicon glyphicon-user'}
+        Contacts
+    %li
+      = link_to instances_path do
+        %i{ class: 'glyphicon glyphicon-th-large'}
+        Instances

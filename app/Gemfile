@@ -6,7 +6,6 @@ gem 'sqlite3'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2u'
 gem "therubyracer"
-gem "twitter-bootstrap-rails"
 gem "bootstrap-datetimepicker-rails"
 gem "bson_ext"
 gem 'haml'
