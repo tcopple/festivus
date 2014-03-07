@@ -21,16 +21,7 @@ module QuestionnaireServices
     @survey = QuestionnaireServices.survey_from_questionnaire(questionnaire)
     @user_id = questionnaire_instance.user.id
 
-    questionnaire_instance.response_set = ResponseSet.create(survey: @survey, user_id: @user_id)
-    return !questionnaire_instance.response_set.nil?
-
-    # if (@survey && @response_set)
-    #   flash[:notice] = t('surveyor.survey_started_success')
-    #   redirect_to(surveyor.edit_my_survey_path(:survey_code => @survey.access_code, :response_set_code  => @response_set.access_code))
-    # else
-    #   flash[:notice] = t('surveyor.Unable_to_find_that_survey')
-    #   redirect_to surveyor_index
-    # end
+    return ResponseSet.create(survey: @survey, user_id: @user_id)
   end
 
   def self.survey_exists? questionnaire

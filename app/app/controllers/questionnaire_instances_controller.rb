@@ -34,10 +34,10 @@ class QuestionnaireInstancesController < ApplicationController
     @questionnaire_instance = QuestionnaireInstance.new(p)
     @questionnaire_instance.user = current_user
 
-    ret = QuestionnaireServices.create_surveyor_instance @questionnaire, @questionnaire_instance
+    @questionnaire_instance.response_set = QuestionnaireServices.create_surveyor_instance @questionnaire, @questionnaire_instance
 
     respond_with(@questionnaire_instance) do |format|
-      if @questionnaire_instance.save && ret
+      if @questionnaire_instance.save
         flash[:notice] = 'Questionnaire instance was successfully created.'
         format.html { redirect_to instances_path }
         format.json { render json: instances_path, status: :created, location: @questionnaire_instance }
