@@ -1,17 +1,19 @@
-%p
-  %b Name:
-  = @questionnaire_instance.name
-%p
-  %b Email:
-  = @questionnaire_instance.email
+%h5= @instance.event.title
+%h5= @instance.user.email
+%h2= @instance.questionnaire.title
+
 %p
   %b Due date:
-  = @questionnaire_instance.due_date
+  = @instance.due_date
+
 %p
   %b Notification count:
-  = @questionnaire_instance.notification_count
+  = @instance.notification_count
 
-= link_to 'View Response Set', view_my_survey_path(survey_code: @surveyor_survey.access_code, reponse_set_code: @surveyor_response_set.access_code)
-= link_to 'Edit', edit_questionnaire_instance_path(@questionnaire_instance)
-\|
-= link_to 'Back', instances_path
+%span
+  Someday we'll put the rsults up on this page, for now just visit them
+  = link_to "here.", surveyor.view_my_survey_path(response_set_code: @response_set.access_code, survey_code: @survey.access_code)
+
+%br
+%br
+  = link_to 'Back', instances_path

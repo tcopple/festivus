@@ -12,10 +12,11 @@ class QuestionnaireInstancesController < ApplicationController
   end
 
   def show
-    @questionnaire_instance = QuestionnaireInstance.find(params[:id])
-    @surveyor_response_set = QuestionnaireInstanceServices.get_surveyor_response_set(@questionnaire_instance)
-    @surveyor_survey = QuestionnaireServices.get_surveyor_survey(@questionnaire)
-    respond_with(@questionnaire_instance)
+    @instance = QuestionnaireInstance.find(params[:id])
+    @questionnaire = @instance.questionnaire #questionnaire as defined by us
+    @response_set = @instance.response_set
+    @survey = @response_set.survey #questionnaire or survey as defined by surveyor gem
+    respond_with(@instance)
   end
 
   def new
@@ -29,7 +30,7 @@ class QuestionnaireInstancesController < ApplicationController
   def create
     @questionnaire = Questionnaire.find(params[:questionnaire_instance][:questionnaire_id])
 
-    datetime = DateTime.strptime(params[:questionnaire_instance][:due_date], "%m/%d/%Y")
+    datetime = DateTime.new(2013, 5, 1) #DateTime.strptime(params[:questionnaire_instance][:due_date], "%m/%d/%Y")
     p = params[:questionnaire_instance].merge({ due_date: datetime})
     @questionnaire_instance = QuestionnaireInstance.new(p)
     @questionnaire_instance.user = current_user

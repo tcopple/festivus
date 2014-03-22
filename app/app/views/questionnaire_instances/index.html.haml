@@ -21,11 +21,12 @@
         %td= instance.event.title
         %td= instance.contact.name
         %td= instance.due_date
-        %td n/a
+        %td= instance.complete?
         %td= instance.notification_count
-        %td= link_to "Show", surveyor.view_my_survey_path(response_set_code: instance.response_set.access_code, survey_code: instance.response_set.survey.access_code)
+        %td= link_to "Show", instance_path(instance)
+        %td= link_to "Results", surveyor.view_my_survey_path(response_set_code: instance.response_set.access_code, survey_code: instance.response_set.survey.access_code)
         %td= link_to "Remind", send_reminder_path(instance), class: "btn btn-xs btn-default"
-        %td= link_to 'Destroy', instance_path(instance.questionnaire, instance), :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn btn-xs btn-danger"
+        %td= link_to 'Destroy', instance_path(instance), :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn btn-xs btn-danger"
 
 %br
 
