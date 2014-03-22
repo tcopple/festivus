@@ -19,7 +19,7 @@ module QuestionnaireServices
   def self.create_surveyor_instance questionnaire, questionnaire_instance
     #copied from surveyor create controller methods, but returns different info
     @survey = QuestionnaireServices.survey_from_questionnaire(questionnaire)
-    @user_id = questionnaire_instance.user.id
+    @user_id = questionnaire_instance.contact.id
 
     return ResponseSet.create(survey: @survey, user_id: @user_id)
   end
