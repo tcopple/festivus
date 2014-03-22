@@ -10,7 +10,7 @@ class QuestionnaireInstance < ActiveRecord::Base
 
   after_initialize :constructor
 
-  #"constructor" is a mnemonic to represent what I'd use in other languages.
+  #"constructor" is a mnemonic to represent what would be used in other languages
   def constructor
     return if !new_record?
     self.notification_count ||= 0 if self.has_attribute? :notification_count
@@ -28,5 +28,9 @@ class QuestionnaireInstance < ActiveRecord::Base
   def access_code
     rs = self.response_set
     surveyor.view_my_survey_path(response_set_code: rs.access_code, survey_code: rs.survey.access_code)
+  end
+
+  def complete?
+    response_set.complete?
   end
 end
