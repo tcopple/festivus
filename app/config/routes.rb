@@ -1,6 +1,6 @@
 Festivus::Application.routes.draw do
   resources :contacts
-
+  resources :events
 
   devise_for :users
 
@@ -9,8 +9,6 @@ Festivus::Application.routes.draw do
   end
 
   resources :instances, controller: "QuestionnaireInstances", only: [:show, :new, :create, :destroy]
-
-  resources :events
 
   match 'instances' => 'questionnaire_instances#index', as: "instances"
   match 'instances/:id/send_reminder' => 'questionnaire_instances#remind', as: "send_reminder"
