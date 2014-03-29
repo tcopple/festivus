@@ -35,7 +35,7 @@ class QuestionnaireInstancesController < ApplicationController
     @questionnaire_instance = QuestionnaireInstance.new(p)
     @questionnaire_instance.user = current_user
 
-    @questionnaire_instance.response_set = QuestionnaireServices.create_surveyor_instance @questionnaire, @questionnaire_instance
+    @questionnaire_instance.response_set = QuestionnaireServices.create_surveyor_instance(@questionnaire, @questionnaire_instance)
 
     respond_with(@questionnaire_instance) do |format|
       if @questionnaire_instance.save
