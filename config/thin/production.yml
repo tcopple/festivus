@@ -3,7 +3,6 @@ require: []
 
 chdir: /var/www/festivus/current/
 pid: tmp/pids/thin.pid
-socket: tmp/sockets/thin.sock
 log: log/thin.log
 
 environment: production
