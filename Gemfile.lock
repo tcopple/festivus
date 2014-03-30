@@ -57,6 +57,9 @@ GEM
     capistrano-sidekiq (0.1.3)
       capistrano
       sidekiq
+    capistrano-thin (1.0.0)
+      capistrano (~> 3.0)
+      thin (~> 1.6)
     celluloid (0.14.1)
       timers (>= 1.0.0)
     coderay (1.1.0)
@@ -251,6 +254,7 @@ DEPENDENCIES
   capistrano-recipes
   capistrano-rvm
   capistrano-sidekiq
+  capistrano-thin
   coffee-rails (~> 3.2.0)
   devise
   foreman

@@ -26,6 +26,7 @@ gem 'capistrano-rails', '~> 1.1'
 gem 'capistrano-rvm'
 gem 'capistrano-sidekiq'
 gem 'capistrano-bundler', '~> 1.1.2'
+gem 'capistrano-thin'
 
 group :development do
   gem 'hirb'
