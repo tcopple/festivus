@@ -1,0 +1,12 @@
+survey "Some New Questionnaire" do
+  section "Simple date questions" do
+    q "What is your testful birth date?"
+    a :string
+
+    q "At what time were you testfully born?"
+    a :string
+
+    q "When would you like to schedule your next test appointment?"
+    a :string
+  end
+end
