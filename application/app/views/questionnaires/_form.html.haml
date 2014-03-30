@@ -1,7 +1,0 @@
-.well
-  = form_for @questionnaire, html: { id: 'questionnaire-form' } do |f|
-    %fieldset
-      = bootstrapped_field(f, @questionnaire, :text_field, :title)
-      = bootstrapped_field(f, @questionnaire, :text_area, :description)
-    .actions
-      = f.submit 'Create', class: 'btn btn-primary'

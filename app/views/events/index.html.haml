@@ -1,0 +1,22 @@
+%h1 Upcoming Events
+
+%table.table.table-striped.table-condensed
+  %thead
+    %tr
+      %th Title
+      %th Description
+      %th When
+      %th Where
+      %th
+
+  %tbody
+    - @events.each do |e|
+      %tr
+        %td= link_to e.title, event_path(e)
+        %td= e.description
+        %td= e.when
+        %td= e.where
+        %td= link_to 'Destroy', e, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn btn-xs btn-danger"
+%br
+
+= link_to 'New Event', new_event_path, class: "btn btn-primary"

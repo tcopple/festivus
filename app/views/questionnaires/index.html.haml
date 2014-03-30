@@ -1,0 +1,21 @@
+%h1 Available Questionnaires
+
+%table.table.table-striped.table-condensed
+  %thead
+    %tr
+      %th Title
+      %th Description
+      %th
+      %th
+
+  %tbody
+    - @questionnaires.each do |questionnaire|
+      %tr
+        %td= questionnaire.title
+        %td= questionnaire.description
+        %td= link_to 'Show', questionnaire
+        %td= link_to 'Destroy', questionnaire, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn btn-xs btn-danger"
+
+%br
+
+= link_to 'New Questionnaire', new_questionnaire_path, class: "btn btn-primary"

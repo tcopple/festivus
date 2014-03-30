@@ -1,0 +1,33 @@
+%h1 Active Instances
+
+- @instances.each do |event, instances|
+  %h4{ class: "event-#{event.id}" }= event.title
+
+  %table.table.table-striped.table-condensed
+    %tr
+      %th Questionnaire Name
+      %th Event
+      %th Contact
+      %th Due date
+      %th Completed
+      %th Notification count
+      %th Show
+      %th Notify
+      %th
+
+    - instances.each do |instance|
+      %tr
+        %td
+        %td= instance.event.title
+        %td= instance.contact.name
+        %td= instance.due_date
+        %td= instance.complete?
+        %td= instance.notification_count
+        %td= link_to "Show", instance_path(instance)
+        %td= link_to "Results", surveyor.view_my_survey_path(response_set_code: instance.response_set.access_code, survey_code: instance.response_set.survey.access_code)
+        %td= link_to "Remind", send_reminder_path(instance), class: "btn btn-xs btn-default"
+        %td= link_to 'Destroy', instance_path(instance), :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn btn-xs btn-danger"
+
+%br
+
+= link_to 'New Instance', new_instance_path, class: "btn btn-primary"
